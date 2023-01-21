@@ -1,29 +1,242 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <main>
-    <ul></ul>
-  </main>
-  <script>
-    let drawData = (data) => {
-      data.forEach(category => {
-        let parent = document.getElementsByTagName('ul')[0]
-        let child = document.createElement('li')
-        // child.innerText = JSON.stringify(category)
-        child.innerText = category.name
-        parent.appendChild(child)
-      })
-    }
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pass Saver - Sandra Diaz</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <!--<script src="./Scripts/passSaver.js"></script>
+    <script src="./Scripts/home.js"></script>-->
+  </head>
+  <body>
+    <div class="contenedor mt-3 border-1 border-dark m-5 h-auto">
+      <div class="cabecera-web bg-dark bg-opacity-50 d-flex">
+        <p class="titulo-cabecera d-flex m-auto fs-3 fw-bold p-2 text-white text-uppercase">Gestor de contraseñas</p>      
+      </div>
+      <!--*******************************************************-->
+      <!--Izquierda: Menu botones - Derecha: Tabla con Categorias-->
+      <div class="columnas-body d-flex h-auto w-auto">
+        <div class="botones-contenido d-flex flex-column w-25 bg-info-subtle"> 
+          <button class="boton-categoria w-100 btn btn-outline-primary mt-2">Categorías</button>
+          <button class="boton-sitio w-100 btn btn-outline-primary mt-2">Sitios web</button>
+          <button class="boton-sitio w-100 btn btn-outline-info mt-2">Añadir</button>
+          <!--cuando le das al boton añadir, aparecen dos nuevos botones-->
+          <div class="botones-habilitados">
+            <button class="boton-sitio w-100 btn btn-outline-info mt-2 disabled">Nueva categoria</button>
+            <button class="boton-sitio w-100 btn btn-outline-info mt-2 disabled">Nuevo sitio web</button>
+          </div>
+        </div>
+        <!--Contenedor Categorias-->
+        <div class="container text-center mt-2">
+          <table class="table table-hover opacity-100 table-bordered">
+            <thead class="table table-primary opacity-100">
+              <tr>
+                <th scope="col">Categorias</th>
+                <th scope="col">Editar</th>
+                <th scope="col">Borrar</th>
+              </tr>
+            </thead>
+            <tbody class="table-group-divider">
+              <!--fila categoria-->
+              <tr>
+                <td class="nombre-categoria">Nombre categoria</td>
+                <td>
+                  <button class="editar btn btn-outline-success opacity-75"><svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M3 21h18M12.222 5.828L15.05 3 20 7.95l-2.828 2.828m-4.95-4.95l-5.607 5.607a1 1 0 00-.293.707v4.536h4.536a1 1 0 00.707-.293l5.607-5.607m-4.95-4.95l4.95 4.95" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg> Editar</button>
+                </td>
+                <td>
+                  <button class="borrar btn btn-outline-danger opacity-75"><svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M9.172 14.828L12.001 12m2.828-2.828L12.001 12m0 0L9.172 9.172M12.001 12l2.828 2.828M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg> Eliminar</button>
+                </td>
+              </tr>
+              <!--fila categoria-->
+              <tr>
+                <td class="nombre-categoria">Nombre categoria</td>
+                <td>
+                  <button class="editar btn btn-outline-success opacity-75"><svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M3 21h18M12.222 5.828L15.05 3 20 7.95l-2.828 2.828m-4.95-4.95l-5.607 5.607a1 1 0 00-.293.707v4.536h4.536a1 1 0 00.707-.293l5.607-5.607m-4.95-4.95l4.95 4.95" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg> Editar</button>
+                </td>
+                <td>
+                  <button class="borrar btn btn-outline-danger opacity-75"><svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M9.172 14.828L12.001 12m2.828-2.828L12.001 12m0 0L9.172 9.172M12.001 12l2.828 2.828M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg> Eliminar</button>
+                </td>
+              </tr>
+              <!--fila categoria-->
+              <tr>
+                <td class="nombre-categoria">Nombre categoria</td>
+                <td>
+                  <button class="editar btn btn-outline-success opacity-75"><svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M3 21h18M12.222 5.828L15.05 3 20 7.95l-2.828 2.828m-4.95-4.95l-5.607 5.607a1 1 0 00-.293.707v4.536h4.536a1 1 0 00.707-.293l5.607-5.607m-4.95-4.95l4.95 4.95" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg> Editar</button>
+                </td>
+                <td>
+                  <button class="borrar btn btn-outline-danger opacity-75"><svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M9.172 14.828L12.001 12m2.828-2.828L12.001 12m0 0L9.172 9.172M12.001 12l2.828 2.828M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg> Eliminar</button>
+                </td>
+              </tr>
+              <!--fila categoria-->
+              <tr>
+                <td class="nombre-categoria">Nombre categoria</td>
+                <td>
+                  <button class="editar btn btn-outline-success opacity-75"><svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M3 21h18M12.222 5.828L15.05 3 20 7.95l-2.828 2.828m-4.95-4.95l-5.607 5.607a1 1 0 00-.293.707v4.536h4.536a1 1 0 00.707-.293l5.607-5.607m-4.95-4.95l4.95 4.95" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg> Editar</button>
+                </td>
+                <td>
+                  <button class="borrar btn btn-outline-danger opacity-75"><svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M9.172 14.828L12.001 12m2.828-2.828L12.001 12m0 0L9.172 9.172M12.001 12l2.828 2.828M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg> Eliminar</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!--*******************************************************-->
+      <!--Izquierda: Menu botones - Derecha: Tabla con Sitios web-->
+      <div class="columnas-body d-flex h-auto w-auto">
+        <div class="botones-contenido d-flex flex-column w-25 bg-info-subtle"> 
+          <button class="boton-categoria w-100 btn btn-outline-primary mt-2">Categorías</button>
+          <button class="boton-sitio w-100 btn btn-outline-primary mt-2">Sitios web</button>
+          <button class="boton-sitio w-100 btn btn-outline-info mt-2">Añadir</button>
+          <!--cuando le das al boton añadir, aparecen dos nuevos botones-->
+          <div class="botones-habilitados">
+            <button class="boton-sitio w-100 btn btn-outline-info mt-2 disabled">Nueva categoria</button>
+            <button class="boton-sitio w-100 btn btn-outline-info mt-2 disabled">Nuevo sitio web</button>
+          </div>
+        </div>
+        <!--Tabla Contenedor Sitios-->
+        <div class="contenedor-sitios container text-center mt-2">
+          <table class="table table-hover opacity-100 table-bordered">
+            <thead class="table table-primary opacity-100">
+              <tr>
+                <th scope="col">Sitios web</th>
+                <th scope="col">User | email</th>
+                <th scope="col">Password</th>
+                <th scope="col">Abrir</th>
+                <th scope="col">Editar</th>
+                <th scope="col">Borrar</th>
+              </tr>
+            </thead>
+            <tbody class="table-group-divider">
+              <!--fila 1-->
+              <tr>
+                <td class="nombre-categoria"><a href="https://www.facebook.com/" class="text-decoration-none">Facebook</a></td>
+                <td class="user-categoria">@User20</td>
+                <td class="pass-categoria">***********</td>
+                <!--date de registro?-->
+                <td>          
+                  <button class="boton-abrir btn btn-outline-info opacity-75"><svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M8 21h12.4a.6.6 0 00.6-.6V3.6a.6.6 0 00-.6-.6H3.6a.6.6 0 00-.6.6V16M3.5 20.5L12 12m0 0v4m0-4H8" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg> Abir</button>
+                </td>
+                <td>
+                  <button class="boton-editar btn btn-outline-success opacity-75"><svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M3 21h18M12.222 5.828L15.05 3 20 7.95l-2.828 2.828m-4.95-4.95l-5.607 5.607a1 1 0 00-.293.707v4.536h4.536a1 1 0 00.707-.293l5.607-5.607m-4.95-4.95l4.95 4.95" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg> Editar</button>
+                </td>
+                <td>
+                  <button class="boton-borrar btn btn-outline-danger opacity-75"><svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M9.172 14.828L12.001 12m2.828-2.828L12.001 12m0 0L9.172 9.172M12.001 12l2.828 2.828M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg> Eliminar</button>
+                </td>
+              </tr>
+              <!--fila 2-->
+              <tr>
+                <td class="nombre-categoria"><a href="https://www.facebook.com/" class="text-decoration-none">Facebook</a></td>
+                <td class="user-categoria">@User20</td>
+                <td class="pass-categoria">***********</td>
+                <td>          
+                  <button class="boton-abrir btn btn-outline-info opacity-75"><svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M8 21h12.4a.6.6 0 00.6-.6V3.6a.6.6 0 00-.6-.6H3.6a.6.6 0 00-.6.6V16M3.5 20.5L12 12m0 0v4m0-4H8" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg> Abir</button>
+                </td>
+                <td>
+                  <button class="boton-editar btn btn-outline-success opacity-75"><svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M3 21h18M12.222 5.828L15.05 3 20 7.95l-2.828 2.828m-4.95-4.95l-5.607 5.607a1 1 0 00-.293.707v4.536h4.536a1 1 0 00.707-.293l5.607-5.607m-4.95-4.95l4.95 4.95" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg> Editar</button>
+                </td>
+                <td>
+                  <button class="boton-borrar btn btn-outline-danger opacity-75"><svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M9.172 14.828L12.001 12m2.828-2.828L12.001 12m0 0L9.172 9.172M12.001 12l2.828 2.828M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg> Eliminar</button>
+                </td>
+              </tr>
+              <!--fila 3-->
+              <tr>
+                <td class="nombre-categoria"><a href="https://www.facebook.com/" class="text-decoration-none">Facebook</a></td>
+                <td class="user-categoria">@User20</td>
+                <td class="pass-categoria">***********</td>
+                <td>          
+                  <button class="boton-abrir btn btn-outline-info opacity-75"><svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M8 21h12.4a.6.6 0 00.6-.6V3.6a.6.6 0 00-.6-.6H3.6a.6.6 0 00-.6.6V16M3.5 20.5L12 12m0 0v4m0-4H8" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><a href="">Abrir</a></button>
+                </td>
+                <td>
+                  <button class="boton-editar btn btn-outline-success opacity-75"><svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M3 21h18M12.222 5.828L15.05 3 20 7.95l-2.828 2.828m-4.95-4.95l-5.607 5.607a1 1 0 00-.293.707v4.536h4.536a1 1 0 00.707-.293l5.607-5.607m-4.95-4.95l4.95 4.95" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg> Editar</button>
+                </td>
+                <td>
+                  <button class="boton-borrar btn btn-outline-danger opacity-75"><svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M9.172 14.828L12.001 12m2.828-2.828L12.001 12m0 0L9.172 9.172M12.001 12l2.828 2.828M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg> Eliminar</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <!--recurso botones-->
+          <button class="boton-salir"><svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M3 17V7a2 2 0 012-2h14a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="#000000" stroke-width="1.5"></path><path d="M10 14.243l2.121-2.122m0 0L14.243 10m-2.122 2.121L10 10m2.121 2.121l2.122 2.122M6 8h1" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg> Cerrar</button>
+          <button class="boton-borrar"><svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M9.172 14.828L12.001 12m2.828-2.828L12.001 12m0 0L9.172 9.172M12.001 12l2.828 2.828M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg> Eliminar</button>
+          <button class="boton-editar"><svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M3 21h18M12.222 5.828L15.05 3 20 7.95l-2.828 2.828m-4.95-4.95l-5.607 5.607a1 1 0 00-.293.707v4.536h4.536a1 1 0 00.707-.293l5.607-5.607m-4.95-4.95l4.95 4.95" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg> Editar</button>
+          <button class="boton-guardar"><svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M3 19V5a2 2 0 012-2h11.172a2 2 0 011.414.586l2.828 2.828A2 2 0 0121 7.828V19a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="#000000" stroke-width="1.5"></path><path d="M8.6 9h6.8a.6.6 0 00.6-.6V3.6a.6.6 0 00-.6-.6H8.6a.6.6 0 00-.6.6v4.8a.6.6 0 00.6.6zM6 13.6V21h12v-7.4a.6.6 0 00-.6-.6H6.6a.6.6 0 00-.6.6z" stroke="#000000" stroke-width="1.5"></path></svg> Guardar</button>
+        </div>
+      </div>
+      <div class="modal-editar-categoria d-flex flex-column align-items-center p-2 m-3 bg-success bg-opacity-50">
+        <div class="fw-bold fs-5">Modal | Editar categoria</div>
+        <!--Solo mostrar los datos-->
+        <input type="text" name="" id="" placeholder="nombre de la categoria" disabled>
+        <div class="d-flex ">
+          <button>salir</button>
+          <button>guardar</button>
+        </div>
+      </div>
+      <div class="modal-eliminar-categoria d-flex flex-column align-items-center p-2 m-3 bg-danger bg-opacity-50">
+        <div class="fw-bold fs-5">Modal | Eliminar categoria</div>
+        <div>¿Quiere eliminar la categoria?</div>
+        <!--hacer un desplegable con las categorias o que solo aparezca la categoria elegida-->
+        <input type="text" name="" id="" placeholder="categoria" disabled>
+        <div class="d-flex ">
+          <button>salir</button>
+          <button>eliminar</button>
+        </div>
+        *Si eliminas la categoria, se eliminar todos los sitios web de esa categoria
+      </div>
+      <div class="modal-abrir-sitio d-flex flex-column align-items-center p-2 m-3 bg-info bg-opacity-50">
+        <div class="fw-bold fs-5">Modal | Detalles sitio web</div>
+        <!--Solo mostrar los datos-->
+        <input type="text" name="" id="" placeholder="Facebook" disabled>
+        <input type="text" name="" id="" placeholder="usuario" disabled>
+        <input type="password" name="" id="" placeholder="password" disabled>
+        <div class="d-flex ">
+          <button>salir</button>
+        </div>
+      </div>
+      <div class="modal-editar-sitio d-flex flex-column align-items-center p-2 m-3 bg-success bg-opacity-50">
+        <div class="fw-bold fs-5">Modal | Editar sitio web</div>
+        <!--Solo mostrar los datos-->
+        <input type="text" name="" id="" placeholder="Facebook" disabled>
+        <input type="text" name="" id="" placeholder="usuario" disabled>
+        <input type="password" name="" id="" placeholder="password" disabled>
+        <div class="d-flex ">
+          <button>guardar</button>
+          <button>salir</button>
+        </div>
+      </div>
+      <div class="modal-eliminar-sitio d-flex flex-column align-items-center p-2 m-3 bg-danger bg-opacity-50">
+        <div class="fw-bold fs-5">Modal | Eliminar sitio web</div>
+        <div>¿Quiere eliminar el sitio web?</div>
+        <input type="text" name="" id="" placeholder="categoria" >
+        <input type="text" name="" id="" placeholder="sitio web" >
+        <input type="text" name="" id="" placeholder="usuario" >
+        <input type="password" name="" id="" placeholder="password" >
+        <div class="d-flex ">
+          <button>guardar</button>
+          <button>salir</button>
+        </div>
+      </div>
+    </div>
+    <!-- <main>
+      <ul></ul>
+    </main>
+    <script>
+      let drawData = (data) => {
+        data.forEach(category => {
+          let parent = document.getElementsByTagName('ul')[0]
+          let child = document.createElement('li')
+          // child.innerText = JSON.stringify(category)
+          child.innerText = category.name
+          parent.appendChild(child)
+        })
+      }
 
-    fetch("http://localhost:3000/categories")
-      .then(res => res.json())
-      .then(data => drawData(data))
-  </script>
-</body>
+      fetch("http://localhost:3000/categories")
+        .then(res => res.json())
+        .then(data => drawData(data))
+    </script> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+  </body>
 </html>
