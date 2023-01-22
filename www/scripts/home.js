@@ -131,7 +131,7 @@ fetch('http://localhost:3000/categories')
         columna6BtnBorrar.classList = 'btn-outline-light border-0 bg-white';
         columna6BtnBorrar.innerHTML = btnBorrar;
         childC4BtnClose.setAttribute('data-bs-toggle', 'modal');
-        childC4BtnClose.setAttribute('data-bs-target', '#BorrarCategoryModal');
+        childC4BtnClose.setAttribute('data-bs-target', '#BorrarSiteModal');
         childC4BtnClose.onclick = () => localStorage.setItem('idSitioWeb', site.id); //Almacena el Id del site al clickarlo
         columna6Borrar.appendChild(columna6BtnBorrar); 
     });
@@ -148,12 +148,12 @@ fetch('http://localhost:3000/categories')
     /** AÑADIMOS UNA CATEGORIA **/
     function addCategory() {
         //Modal categoria
-        let nombreCategoria = document.getElementById('valorCategoria').value;
+        let nombre = document.getElementById('valorCategoria').value;
         let body = {
-            name: nombreCategoria
+            name: nombre,
         };
         //cabecera
-        const cabecera = {
+        const optionCabecera = {
             headers: {
                 'Content-type':'application/json'
             },
@@ -161,7 +161,7 @@ fetch('http://localhost:3000/categories')
             body: JSON.stringify(body)
         }  
         //comprobar que el nombre de la categoria no esta repetido
-        fetch(`http://localhost:3000/categories`, cabecera)
+        fetch(`http://localhost:3000/categories`, optionCabecera)
         .then((response) => {
             debugger;
             response.json();
@@ -183,7 +183,7 @@ fetch('http://localhost:3000/categories')
         let id = localStorage.getItem('idSitioWeb');
         //Llamamos a la api para eliminar el sitio web
         const borrarSitioWeb = { method: 'DELETE' };
-        fetch (``,borrarSitioWeb)
+        fetch (`http://localhost:3000/sites/${id}`,borrarSitioWeb)
         .then((response) => response.json)
         .then((response) => console.log(response))
         .catch((err) => console.log(err))

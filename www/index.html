@@ -24,8 +24,9 @@
           <!-- <button class="boton-sitio w-100 btn btn-outline-info mt-2">Añadir</button> -->
           <!--cuando le das al boton añadir, aparecen dos nuevos botones-->
           <div class="botones-habilitados d-flex flex-row ms-5">
-            <button id="valor" class="modal-boton-sitio btn btn-outline-primary mt-2" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Nueva categoria</button>
+            <button class="modal-boton-sitio btn btn-outline-primary mt-2" type="button" id="myInput" data-bs-toggle="modal" data-bs-target="#addCategory">Nueva categoria</button>
             <button class="modal-boton-sitio btn btn-outline-info mt-2" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal2" data-bs-toggle="modal" data-bs-target="#passSaverModal" onload="asignOnClick()">Nuevo sitio web</button>
+            <button><a href="passSaver.html">Pass Saver</a></button>
           </div>
         </div>
         <!--Contenedor Categorias-->
@@ -148,23 +149,26 @@
       <!---------------------------------------------------->
       
       <!-- NUEVA CATEGORIA| Falta cambiar datos-->
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
+      <div class="modal fade" id="addCategory" tabindex="-1"  data-bs-target="#addCategoryLabel" aria-hidden="true">
+        <div class="modal-dialog">
           <div class="modal-content">
               <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Nueva Categoria</h1>
+                <h1 class="modal-title fs-5" id="addCategory">Nueva Categoria</h1>
+                <!--boton de cerrar modal (X)-->
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body d-flex flex-column">
                 <p>Categoria</p>
+                <!--este valor se guarda y se pasa a la tabla de categorias-->
                 <input type="text" placeholder="escribe la nueva categoria" id="valorCategoria">
               </div>
               <div class="modal-footer">
+                <!--botones interactivos de la modal-->
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                 <button type="button" class="btn btn-success" onclick="addCategory()">Guardar</button>
               </div>
           </div>
-          </div>
+        </div>
       </div>
       
       <!-- NUEVO SITIO WEB | Falta cambiar datos | Pass Saver Html - Css-->
@@ -223,7 +227,7 @@
           </div>
       </div>
       
-      <!-- BORRAR | Falta cambiar datos | Pass Saver Html - Css-->
+      <!-- BORRAR CATEGORIA | Falta cambiar datos | Pass Saver Html - Css-->
       <div class="modal fade" id="borrar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">
           <div class="modal-content">
@@ -246,6 +250,26 @@
           </div>
       </div>
       
+      <!-- BORRAR SITIO WEB | Falta cambiar datos | Pass Saver Html - Css-->
+      <div class="modal fade" id="borrarSitioWebModal" tabindex="-1" aria-labelledby="borrarSitioWebLabel" aria-hidden="true">
+          <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="borrarSitioWebLabel">Borrar</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body d-flex flex-column">
+                <div class="d-flex flex-column mt-3 bg-info-subtle">
+                  <p>¿Quieres borrar este sitio web?</p>
+                  <input type="text">
+                </div>
+              </div>
+              <div class="modal-footer d-flex flex-row justify-content-center ">
+                <button type="button" class="btn btn-danger w-25" id="acceptBorrarSite" onclick="borrarSitioWeb()" >Eliminar</button>
+              </div>
+          </div>
+          </div>
+      </div>
       <!-- ABRIR | Falta cambiar datos | Pass Saver Html - Css-->
       <div class="modal fade" id="abrir" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">
