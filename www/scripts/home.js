@@ -1,4 +1,9 @@
-/**Home.js es la página Index */
+/**Botones */
+const btnBorrar = <svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M9.172 14.828L12.001 12m2.828-2.828L12.001 12m0 0L9.172 9.172M12.001 12l2.828 2.828M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>;
+const btnEditar = <svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M3 21h18M12.222 5.828L15.05 3 20 7.95l-2.828 2.828m-4.95-4.95l-5.607 5.607a1 1 0 00-.293.707v4.536h4.536a1 1 0 00.707-.293l5.607-5.607m-4.95-4.95l4.95 4.95" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>;
+const btnAbrir = <svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M8 21h12.4a.6.6 0 00.6-.6V3.6a.6.6 0 00-.6-.6H3.6a.6.6 0 00-.6.6V16M3.5 20.5L12 12m0 0v4m0-4H8" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>;
+const btnGuardar = <svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M3 19V5a2 2 0 012-2h11.172a2 2 0 011.414.586l2.828 2.828A2 2 0 0121 7.828V19a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="#000000" stroke-width="1.5"></path><path d="M8.6 9h6.8a.6.6 0 00.6-.6V3.6a.6.6 0 00-.6-.6H8.6a.6.6 0 00-.6.6v4.8a.6.6 0 00.6.6zM6 13.6V21h12v-7.4a.6.6 0 00-.6-.6H6.6a.6.6 0 00-.6.6z" stroke="#000000" stroke-width="1.5"></path></svg>;
+
 /**Cuando cargamos la página llamamos a categoria y a sites */
 window.onload = () => {
     fetch('http://localhost:3000/categories')
@@ -104,7 +109,7 @@ fetch('http://localhost:3000/categories')
         let columna4BtnAbrir = document.createElement('button');
         columna4BtnAbrir.type = 'button';
         columna4BtnAbrir.classList = 'btn-outline-light border-0 bg-white';
-        columna4BtnAbrir.innerHTML = btnOpen;
+        columna4BtnAbrir.innerHTML = btnAbrir;
         columna4Abrir.appendChild(columna4BtnAbrir);
         //5ta Creamos la Columna de editar
         let columna5Editar = document.createElement('td');
@@ -116,6 +121,19 @@ fetch('http://localhost:3000/categories')
         columna5BtnEditar.classList = 'btn-outline-light border-0 bg-white';
         columna5BtnEditar.innerHTML = btnEditar;
         columna5Editar.appendChild(columna5BtnEditar); 
+        //6ta Creamos la Columna de editar
+        let columna6Borrar = document.createElement('td');
+        columna6Borrar.type = 'td';
+        columna6Borrar.appendChild();
+        //Creamos el boton de editar sitio web
+        let columna6BtnBorrar = document.createElement('button');
+        columna6BtnBorrar.type = 'button';
+        columna6BtnBorrar.classList = 'btn-outline-light border-0 bg-white';
+        columna6BtnBorrar.innerHTML = btnBorrar;
+        childC4BtnClose.setAttribute('data-bs-toggle', 'modal');
+        childC4BtnClose.setAttribute('data-bs-target', '#BorrarCategoryModal');
+        childC4BtnClose.onclick = () => localStorage.setItem('idSitioWeb', site.id); //Almacena el Id del site al clickarlo
+        columna6Borrar.appendChild(columna6BtnBorrar); 
     });
 
      /** VISUALIZAMOS SITIOS WEB **/
@@ -195,5 +213,6 @@ fetch('http://localhost:3000/categories')
         //Visualizamos los sitios web actualizados
         location.reload();
     }
+
 
 };
