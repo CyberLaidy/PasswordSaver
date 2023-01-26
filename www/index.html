@@ -289,6 +289,164 @@
 
       
     </div>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="passSaverModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">PassSaver</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="row mb-3">
+              <label for="inputName" class="col-sm-2 col-form-label">Site</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputName" />
+              </div>
+            </div>
+            <div class="row mb-3">
+              <label for="inputURL" class="col-sm-2 col-form-label">URL</label>
+              <div class="col-sm-10">
+                <input
+                  type="URL"
+                  class="form-control"
+                  id="inputURL"
+                  placeholder="https://www.yourweb.com"
+                />
+              </div>
+            </div>
+            <div class="row mb-3">
+              <label for="inputUser" class="col-sm-2 col-form-label"
+                >User</label
+              >
+              <div class="col-sm-10">
+                <input
+                  type="email"
+                  class="form-control"
+                  id="inputUser"
+                  placeholder="yourname@mail.com"
+                />
+              </div>
+            </div>
+            <div class="row mb-3">
+              <label for="inputPassword" class="col-sm-2 col-form-label"
+                >Password</label
+              >
+              <div class="col-sm-8">
+                <input
+                  type="password"
+                  class="form-control"
+                  id="inputPassword"
+                />
+              </div>
+              <div class="col-1 d-flex justify-content-end ml-1">
+                <button
+                  type="button"
+                  class="btn"
+                  id="showPassword"
+                  onclick="hidePassword()"
+                >
+                  <?xml version="1.0" encoding="UTF-8"?><svg
+                    width="24px"
+                    height="24px"
+                    stroke-width="1.5"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    color="#000000"
+                  >
+                    <path
+                      d="M12 14a2 2 0 100-4 2 2 0 000 4z"
+                      stroke="#000000"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>
+                    <path
+                      d="M21 12c-1.889 2.991-5.282 6-9 6s-7.111-3.009-9-6c2.299-2.842 4.992-6 9-6s6.701 3.158 9 6z"
+                      stroke="#000000"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>
+                  </svg>
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  onclick="generatePassword()"
+                >
+                  <?xml version="1.0" encoding="UTF-8"?><svg
+                    width="24px"
+                    height="24px"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    color="#ffffff"
+                  >
+                    <path
+                      d="M14 21H4a2 2 0 01-2-2V5a2 2 0 012-2h16a2 2 0 012 2v9"
+                      stroke="#ffffff"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                    ></path>
+                    <path
+                      d="M2 7h20M5 5.01l.01-.011M8 5.01l.01-.011M11 5.01l.01-.011M19.5 16v6m0 0L17 19.5m2.5 2.5l2.5-2.5"
+                      stroke="#ffffff"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="row mb-3">
+              <label class="col-sm-2 col-form-label" for="floatingTextarea2"
+                >Comments</label
+              >
+              <div class="col-sm-10">
+                <textarea
+                  class="form-control"
+                  placeholder="Leave a comment here"
+                  id="inputDescription"
+                  style="height: 100px"
+                ></textarea>
+              </div>
+            </div>
+            <div class="row mb-3"></div>
+            <div class="modal-footer">
+              <div class="d-flex justify-content-center">
+                <button class="btn btn-danger me-4" data-bs-dismiss="modal">
+                  Cancel
+                </button>
+                <button
+                  class="btn btn-primary"
+                  id="submitBtn"
+                  onclick="onSubmit()"
+                >
+                  Save
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- <main>
       <ul></ul>
     </main>
@@ -308,6 +466,7 @@
         .then(data => drawData(data))
     </script> -->
     <script src="scripts/home.js"></script>
+    <script src="scripts/passSaver.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
