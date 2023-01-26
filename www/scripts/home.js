@@ -8,27 +8,28 @@ const btnGuardar = <svg width="24px" height="24px" stroke-width="1.5" viewBox="0
 window.onload = () => {
     fetch('http://localhost:3000/categories')
     .then((response) => response.json())
-    .then((datosCategories) => dibujarDatosCategories(datosCategories));
+    .then((dataCategories) => drawDataCategories(dataCategories));
 
     fetch('http://localhost:3000/sites')
     .then((resp) => resp.json())
-    .then((datosSites) => dibujarDatosSites(datosSites))
+    .then((dataSites) => drawDataSites(dataSites))
 };
 
 
 /** TABLA CATEGORIAS **/
-let dibujarDatosCategories = (datosCategories) => {
-    datosCategories.forEach((category) => {
+let drawDataCategories = (dataCategories) => {
+    dataCategories.forEach((category) => {
         let parent = document.getElementById('categoriesTable');
         //Fila de la tabla categorias
-        let hijo = document.createElement('tr');
-        hijo.type = 'tr';
-        hijo.classList = 'd-flex container-fluid justify-content-between';
-        parent.appendChild(hijo);
-        //Columna - nombre de la categoria
-        let columna1 = document.createElement('td');
-        columna1.type= 'td';
-        hijo.appendChild(columna1);
+        let childRow = document.createElement('tr');
+        childRow.type = 'tr';
+        childRow.classList = 'd-flex container-fluid justify-content-between';
+        parent.appendChild(childRow);
+        
+        //1ra Columna - nombre de la categoria
+        let childCol1 = document.createElement('td');
+        childCol1.type= 'td';
+        childRow.appendChild(childCol1);
         //Crea el botón del nombre de la categoria 
         let btnCategory = document.createElement('button');
         btnCategory.type = 'button';
@@ -37,123 +38,133 @@ let dibujarDatosCategories = (datosCategories) => {
         btnCategory.onclick = () => {
             visualizeCategorySites(category.id);
         };
-        columna1.appendChild(btnCategory);
+        childCol1.appendChild(btnCategory);
+        
+        //2da Columna Editar
+        let childCol2 = document.createElement('td');
+        childCol2.type= 'td';
+        childRow.appendChild(childCol2);
+        //Crea el botón de visualizar/editar la categoria 
+        let btnVerCategory = document.createElement('button');
+        btnVerCategory.type = 'button';
+        btnVerCategory.classList = 'list-group-item list-group-item-action btn-outline-light border-0 bg-white';
+        btnVerCategory.innerText = category.name;
+        btnVerCategory.onclick = () => {
+        visualizarCategorySites(category.id);
+        };
+        childCol2.appendChild(btnVerCategory); 
+    
+        //3ra Columna Borrar categoria
+        let childCol3 = document.createElement('td');
+        childCol3.type='td';
+        childRow.appendChild(childCol3);
+        //Boton de borrar categorias
+        let childCol3DeleteCategory= document.createElement('button');
+        childCol3DeleteCategory.type='button';
+        childCol3DeleteCategory.classList = 'btn-outline-light border-0 bg-white';
+        childCol3DeleteCategory.innerHTML = btnBorrar;
+        //Modal pop-up borrar
+        childCol3DeleteCategory.setAttribute('data-bs-toggle', 'modal');
+        childCol3DeleteCategory.setAttribute('data-bs-target', '#DeleteCategoryModal');
+        childCol3DeleteCategory.onclick = () => localStorage.setItem('idC', category.id); //Almacena el Id de la category al clickarlo
+        childCol3.appendChild(childCol3DeleteCategory);
     });
 
-    //Columna Editar
-    let columna2 = document.createElement('td');
-    columna2.type= 'td';
-    hijo.appendChild(columna2);
-    //Crea el botón de visualizar/editar la categoria 
-    let btnVerCategory = document.createElement('button');
-    btnVerCategory.type = 'button';
-    btnVerCategory.classList = 'list-group-item list-group-item-action btn-outline-light border-0 bg-white';
-    btnVerCategory.innerText = category.visualizar;
-    btnVerCategory.onclick = () => {
-    visualizarCategorySites(category.id);
-    };
-    columna2.appendChild(btnVerCategory); 
-
-    //Columna Borrar categoria
-    let columna3 = document.createElement('td');
-    columna3.type='td';
-    hijo.appendChild(columna3);
-    //Boton de borrar categorias
-    let btnBorrarCategory= document.createElement('button');
-    btnBorrarCategory.type='button';
-    btnBorrarCategory.classList = 'btn-outline-light border-0 bg-white';
-    btnBorrarCategory.innerHTML = btnBorrar;
-    //Modal pop-up borrar
-    btnBorrarCategory.setAttribute('data-bs-toggle', 'modal');
-    btnBorrarCategory.setAttribute('data-bs-target', '#BorrarCategoryModal');
-    btnBorrarCategory.onclick = () => localStorage.setItem('idCategory', category.id); //Almacena el Id de la category al clickarlo
-    columna3.appendChild(btnBorrarCategory);
 
 };
 
 fetch('http://localhost:3000/categories')
   .then((response) => response.json())
-  .then((datosCategories) => dibujarDatosCategories(datosCategories));
+  .then((dataCategories) => drawDataCategories(dataCategories));
 
+  
 /** TABLA SITIOS WEB **/
- let dibujarDatosSites = (datosSites) => {
-    datosSites.forEach((site) => {
-        let parent = document.getElementById('datosSites');
+ let drawDataSites = (dataSites) => {
+    dataSites.forEach((site) => {
+        let parent = document.getElementById('sitesTable');
+        
         //Creamos la fila de los sitios webs (row)
-        let filaSite = document.createElement('tr');
-        filaSite.type = 'tr';
+        let childRow = document.createElement('tr');
+        childRow.type = 'tr';
         parent.appendChild(filaSite)
+        
         //1ra Columna nombre del sitio web
-        let columna1SiteWeb = document.createElement('td');
-        columna1SiteWeb.type = 'td';
-        columna1SiteWeb.classList = 'align-middle';
-        columna1SiteWeb.innerText = site.name;
-        filaSite.appendChild(columna1SiteWeb);
+        let childCol1 = document.createElement('td');
+        childCol1.type = 'td';
+        childCol1.classList = 'align-middle';
+        childCol1.innerText = site.name;
+        childRow.appendChild(childCol1);
+        
         //2da Columna con el nombre del usuario
-        let columna2SiteUser = document.createElement('td');
-        columna2SiteUser.type = 'td';
-        columna2SiteUser.classList = 'align-middle';
-        columna2SiteUser.innerText = site.name;
-        filaSite.appendChild(columna2SiteUser);
+        let childCol2 = document.createElement('td');
+        childCol2.type = 'td';
+        childCol2.classList = 'align-middle';
+        childCol2.innerText = site.name;
+        childRow.appendChild(childCol2);
+        
         //3ra Columna con la password del usuario
-        let columna3SitePass = document.createElement('td');
-        columna3SitePass.type = 'td';
-        columna3SitePass.classList = 'align-middle';
-        columna3SitePass.innerText = site.name;
-        filaSite.appendChild(columna3SitePass);
+        let childCol3 = document.createElement('td');
+        childCol3.type = 'td';
+        childCol3.classList = 'align-middle';
+        childCol3.innerText = site.name;
+        childRow.appendChild(childCol3);
+        
         //4ta Creamos la Columna de abrir
-        let columna4Abrir = document.createElement('td');
-        columna4Abrir.type = 'td';
-        columna4Abrir.appendChild();
-        //Creamos el boton de abrir sitio web
-        let columna4BtnAbrir = document.createElement('button');
-        columna4BtnAbrir.type = 'button';
-        columna4BtnAbrir.classList = 'btn-outline-light border-0 bg-white';
-        columna4BtnAbrir.innerHTML = btnAbrir;
-        columna4Abrir.appendChild(columna4BtnAbrir);
+        let childCol4 = document.createElement('td');
+        childCol4.type = 'td';
+        childCol4.appendChild();
+        
+        //Creamos el contenido / boton de abrir sitio web
+        let childCol4Open = document.createElement('button');
+        childCol4Open.type = 'button';
+        childCol4Open.classList = 'btn-outline-light border-0 bg-white';
+        childCol4Open.innerHTML = btnAbrir;
+        childCol4.appendChild(childCol4Open);
+        
         //5ta Creamos la Columna de editar
-        let columna5Editar = document.createElement('td');
-        columna5Editar.type = 'td';
-        columna5Editar.appendChild();
-        //Creamos el boton de editar sitio web
-        let columna5BtnEditar = document.createElement('button');
-        columna5BtnEditar.type = 'button';
-        columna5BtnEditar.classList = 'btn-outline-light border-0 bg-white';
-        columna5BtnEditar.innerHTML = btnEditar;
-        columna5Editar.appendChild(columna5BtnEditar); 
+        let childCol5 = document.createElement('td');
+        childCol5.type = 'td';
+        childCol5.appendChild();
+        //Creamos el boton de editar sitio web - rellenamos contenido
+        let childCol5BDelete = document.createElement('button');
+        childCol5BEdit.type = 'button';
+        childCol5BEdit.classList = 'btn-outline-light border-0 bg-white';
+        childCol5BEdit.innerHTML = btnEditar;
+        childCol5.appendChild(childCol5BEdit); 
+        
         //6ta Creamos la Columna de editar
-        let columna6Borrar = document.createElement('td');
-        columna6Borrar.type = 'td';
-        columna6Borrar.appendChild();
+        let childCol6 = document.createElement('td');
+        childCol6.type = 'td';
+        childCol6.appendChild();
         //Creamos el boton de editar sitio web
-        let columna6BtnBorrar = document.createElement('button');
-        columna6BtnBorrar.type = 'button';
-        columna6BtnBorrar.classList = 'btn-outline-light border-0 bg-white';
-        columna6BtnBorrar.innerHTML = btnBorrar;
-        childC4BtnClose.setAttribute('data-bs-toggle', 'modal');
-        childC4BtnClose.setAttribute('data-bs-target', '#BorrarCategoryModal');
-        childC4BtnClose.onclick = () => localStorage.setItem('idSitioWeb', site.id); //Almacena el Id del site al clickarlo
-        columna6Borrar.appendChild(columna6BtnBorrar); 
+        let childCol6Delete = document.createElement('button');
+        childCol6Delete.type = 'button';
+        childCol6Delete.classList = 'btn-outline-light border-0 bg-white';
+        childCol6Delete.innerHTML = btnBorrar;
+        childCol6Delete.setAttribute('data-bs-toggle', 'modal');
+        childCol6Delete.setAttribute('data-bs-target', '#DeleteSiteModal');
+        childCol6Delete.onclick = () => localStorage.setItem('idSWeb', site.id); //Almacena el Id del site al clickarlo
+        childCol6.appendChild(childCol6Delete); 
     });
 
      /** VISUALIZAMOS SITIOS WEB **/
     function visualizeCategorySites (categoryId){
-        let parent = document.getElementById('datosSites');
-        localStorage.setItem('idCategory', categoryId);
-        while (parent.firsthijo){
-            parent.removeHijo(parent.firsthijo);
+        let parent = document.getElementById('sitesTable');
+        localStorage.setItem('idC', categoryId);
+        while (parent.firstChild){
+            parent.removeChild(parent.firstChild);
         }
     };
 
     /** AÑADIMOS UNA CATEGORIA **/
-    function addCategory() {
+    function AddCategory() {
         //Modal categoria
-        let nombreCategoria = document.getElementById('valorCategoria').value;
+        let nombre = document.getElementById('inputCategoria').value;
         let body = {
-            name: nombreCategoria
+            name: nombre,
         };
         //cabecera
-        const cabecera = {
+        const options = {
             headers: {
                 'Content-type':'application/json'
             },
@@ -161,7 +172,7 @@ fetch('http://localhost:3000/categories')
             body: JSON.stringify(body)
         }  
         //comprobar que el nombre de la categoria no esta repetido
-        fetch(`http://localhost:3000/categories`, cabecera)
+        fetch(`http://localhost:3000/categories`, options)
         .then((response) => {
             debugger;
             response.json();
@@ -170,7 +181,8 @@ fetch('http://localhost:3000/categories')
         .then((response) => console.log(response))
         .finally(() => location.reload())
         .catch((err) => console.log(err));
-    };
+    }
+
 
 
     /********************************************/
@@ -178,12 +190,12 @@ fetch('http://localhost:3000/categories')
     /******************************************/
     
   /** ELIMINAR SITIO WEB **/
-    function borrarSitioWeb() {
+    function DeleteSite() {
         //cogemos el id del sitio web
-        let id = localStorage.getItem('idSitioWeb');
+        let id = localStorage.getItem('idSWeb');
         //Llamamos a la api para eliminar el sitio web
         const borrarSitioWeb = { method: 'DELETE' };
-        fetch (``,borrarSitioWeb)
+        fetch (`http://localhost:3000/sites/${id}`,borrarSitioWeb)
         .then((response) => response.json)
         .then((response) => console.log(response))
         .catch((err) => console.log(err))
@@ -192,21 +204,21 @@ fetch('http://localhost:3000/categories')
     }
 
     /** ELIMINAR CATEGORIAS Y CONTENIDO SITIOS WEB**/
-    function borrarCategoria() {
+    function DeleteCategory() {
         //cogemos el id de la categoria
-        let id = localStorage.getItem('idCategory');
+        let id = localStorage.getItem('idC');
         //borrar todos los sitios web de la categoria
         const option1 = {method: 'GET'};
         //Llamada a la api seleccionamos la categoria y borramos los sites asociados a el
         fetch(`http://localhost:3000/categories/${id}`, option1)
         .then((response) => response.json)
         .then((response) => response.forEach((site) => {
-            borrarSitioWeb()
+            DeleteSite()
         }))
         .catch((err) => console.log(err));
         //Llamamos a la api paa eliminar la categoria
         const option2 = { method: 'DELETE' };
-        fetch(``, option2)
+        fetch(`http://localhost:3000/categories/${id}`, option2)
         .then((response) => response.json())
         .then((response) => console.log(response))
         .catch((err) => console.log(err));

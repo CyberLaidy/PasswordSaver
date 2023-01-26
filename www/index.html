@@ -24,8 +24,9 @@
           <!-- <button class="boton-sitio w-100 btn btn-outline-info mt-2">Añadir</button> -->
           <!--cuando le das al boton añadir, aparecen dos nuevos botones-->
           <div class="botones-habilitados d-flex flex-row ms-5">
-            <button id="valor" class="modal-boton-sitio btn btn-outline-primary mt-2" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Nueva categoria</button>
-            <button class="modal-boton-sitio btn btn-outline-info mt-2" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal2" data-bs-toggle="modal" data-bs-target="#passSaverModal" onload="asignOnClick()">Nuevo sitio web</button>
+            <button type="button" id="myInput" class="modal-boton-sitio btn btn-outline-primary mt-2" data-bs-toggle="modal" data-bs-target="#AddCategoryModal">Nueva categoria</button>
+            <button type="button" class="modal-boton-sitio btn btn-outline-info mt-2" data-bs-toggle="modal" data-bs-target="#passSaverModal" onload="asignOnClick()">Nuevo sitio web</button>
+            <button><a href="passSaver.html">Pass Saver</a></button>
           </div>
         </div>
         <!--Contenedor Categorias-->
@@ -38,51 +39,25 @@
                 <th scope="col">Borrar</th>
               </tr>
             </thead>
-            <tbody class="table-group-divider">
-              <!--fila categoria-->
-              <tr>
-                <td class="nombre-categoria">Nombre categoria</td>
-                <td>
-                  <button class="modal-boton-sitio editar btn btn-outline-success opacity-75" type="button" data-bs-toggle="modal" data-bs-target="#edit"><svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M3 21h18M12.222 5.828L15.05 3 20 7.95l-2.828 2.828m-4.95-4.95l-5.607 5.607a1 1 0 00-.293.707v4.536h4.536a1 1 0 00.707-.293l5.607-5.607m-4.95-4.95l4.95 4.95" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg> Editar</button>
-                </td>
-                <td>
-                  <button class="borrar btn btn-outline-danger opacity-75" type="button" data-bs-toggle="modal" data-bs-target="#borrar"><svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M9.172 14.828L12.001 12m2.828-2.828L12.001 12m0 0L9.172 9.172M12.001 12l2.828 2.828M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg> Eliminar</button>
-                </td>
-              </tr>
-              <!--fila categoria-->
-              <tr>
-                <td class="nombre-categoria">Nombre categoria</td>
-                <td>
-                  <button class="editar btn btn-outline-success opacity-75"><svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M3 21h18M12.222 5.828L15.05 3 20 7.95l-2.828 2.828m-4.95-4.95l-5.607 5.607a1 1 0 00-.293.707v4.536h4.536a1 1 0 00.707-.293l5.607-5.607m-4.95-4.95l4.95 4.95" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg> Editar</button>
-                </td>
-                <td>
-                  <button class="borrar btn btn-outline-danger opacity-75"><svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M9.172 14.828L12.001 12m2.828-2.828L12.001 12m0 0L9.172 9.172M12.001 12l2.828 2.828M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg> Eliminar</button>
-                </td>
-              </tr>
-              <!--fila categoria-->
-              <tr>
-                <td class="nombre-categoria">Nombre categoria</td>
-                <td>
-                  <button class="editar btn btn-outline-success opacity-75"><svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M3 21h18M12.222 5.828L15.05 3 20 7.95l-2.828 2.828m-4.95-4.95l-5.607 5.607a1 1 0 00-.293.707v4.536h4.536a1 1 0 00.707-.293l5.607-5.607m-4.95-4.95l4.95 4.95" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg> Editar</button>
-                </td>
-                <td>
-                  <button class="borrar btn btn-outline-danger opacity-75"><svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M9.172 14.828L12.001 12m2.828-2.828L12.001 12m0 0L9.172 9.172M12.001 12l2.828 2.828M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg> Eliminar</button>
-                </td>
-              </tr>
-              <!--fila categoria-->
-              <tr>
-                <td class="nombre-categoria">Nombre categoria</td>
-                <td>
-                  <button class="editar btn btn-outline-success opacity-75"><svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M3 21h18M12.222 5.828L15.05 3 20 7.95l-2.828 2.828m-4.95-4.95l-5.607 5.607a1 1 0 00-.293.707v4.536h4.536a1 1 0 00.707-.293l5.607-5.607m-4.95-4.95l4.95 4.95" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg> Editar</button>
-                </td>
-                <td>
-                  <button class="borrar btn btn-outline-danger opacity-75"><svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M9.172 14.828L12.001 12m2.828-2.828L12.001 12m0 0L9.172 9.172M12.001 12l2.828 2.828M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg> Eliminar</button>
-                </td>
-              </tr>
+            <tbody class="table-group-divider" class="table table-white" id="">
+              <!--En estatabla aparecerá el listado de sites-->
             </tbody>
           </table>
         </div>
       </div>
+      
+      <div class="categTabla d-flex content w-100 me-2 mt-3">
+        <!--Tabla Categoria-->
+        <div class="categoriaSite m-2 w-25 h-auto bg-warning border border-dark bg-white">
+          <p class="btCategoria d-flex flex-fill text-primary justify-content-center pt-1 pb-1 m-1">
+            Categories
+          </p>
+          <hr class="border border-1 border-dark p-0 m-0" />
+          <table class="table d-block" id="categoriesTable">
+            <!-- En esta tabla aparecerá el listado de categorias -->
+          </table>
+        </div>
+        
       <!--*******************************************************-->
       <!--Izquierda: Menu botones - Derecha: Tabla con Sitios web-->
       <div class="columnas-body d-flex h-auto w-auto">
@@ -91,47 +66,16 @@
           <table class="table table-hover opacity-100 table-bordered">
             <thead class="table table-primary opacity-100">
               <tr>
-                <th scope="col">Sitios web</th>
-                <th scope="col">User | email</th>
+                <th scope="col">Sites</th>
+                <th scope="col">User</th>
                 <th scope="col">Password</th>
                 <th scope="col">Abrir</th>
                 <th scope="col">Editar</th>
                 <th scope="col">Borrar</th>
               </tr>
             </thead>
-            <tbody class="table-group-divider">
-              <!--fila 1-->
-              <tr>
-                <td class="nombre-categoria"><a href="https://www.facebook.com/" class="text-decoration-none"></a></td>
-                <td class="user-categoria"></td>
-                <td class="pass-categoria"></td>
-                <!--date de registro?-->
-                <td>          
-                  <button class="boton-abrir btn btn-outline-info opacity-75" type="button" data-bs-toggle="modal" data-bs-target="#abrir"><svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M8 21h12.4a.6.6 0 00.6-.6V3.6a.6.6 0 00-.6-.6H3.6a.6.6 0 00-.6.6V16M3.5 20.5L12 12m0 0v4m0-4H8" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg> Abir</button>
-                </td>
-                <td>
-                  <button class="boton-editar btn btn-outline-success opacity-75"><svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M3 21h18M12.222 5.828L15.05 3 20 7.95l-2.828 2.828m-4.95-4.95l-5.607 5.607a1 1 0 00-.293.707v4.536h4.536a1 1 0 00.707-.293l5.607-5.607m-4.95-4.95l4.95 4.95" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg> Editar</button>
-                </td>
-                <td>
-                  <button class="boton-borrar btn btn-outline-danger opacity-75"><svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M9.172 14.828L12.001 12m2.828-2.828L12.001 12m0 0L9.172 9.172M12.001 12l2.828 2.828M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg> Eliminar</button>
-                </td>
-              </tr>
-              <!--fila 2-->
-              <tr>
-                <td class="nombre-categoria"><a href="https://www.facebook.com/" class="text-decoration-none"></a></td>
-                <td class="user-categoria"></td>
-                <td class="pass-categoria"></td>
-                <!--date de registro?-->
-                <td>          
-                  <button class="boton-abrir btn btn-outline-info opacity-75"><svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M8 21h12.4a.6.6 0 00.6-.6V3.6a.6.6 0 00-.6-.6H3.6a.6.6 0 00-.6.6V16M3.5 20.5L12 12m0 0v4m0-4H8" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg> Abir</button>
-                </td>
-                <td>
-                  <button class="boton-editar btn btn-outline-success opacity-75"><svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M3 21h18M12.222 5.828L15.05 3 20 7.95l-2.828 2.828m-4.95-4.95l-5.607 5.607a1 1 0 00-.293.707v4.536h4.536a1 1 0 00.707-.293l5.607-5.607m-4.95-4.95l4.95 4.95" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg> Editar</button>
-                </td>
-                <td>
-                  <button class="boton-borrar btn btn-outline-danger opacity-75"><svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M9.172 14.828L12.001 12m2.828-2.828L12.001 12m0 0L9.172 9.172M12.001 12l2.828 2.828M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg> Eliminar</button>
-                </td>
-              </tr>
+            <tbody class="table-group-divider" id="sitesTable">
+              <!--En estatabla aparecerá el listado de sites web-->
             </tbody>
           </table>
           <!--recurso botones-->
@@ -148,25 +92,76 @@
       <!---------------------------------------------------->
       
       <!-- NUEVA CATEGORIA| Falta cambiar datos-->
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
+      <div class="modal fade" id="AddCategoryModal" tabindex="-1"  aria-labelledby="AddCategoryModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
           <div class="modal-content">
               <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Nueva Categoria</h1>
+                <h1 class="modal-title fs-5" id="AddCategoryModalLabel">Nueva Categoria</h1>
+                <!--boton de cerrar modal (X)-->
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body d-flex flex-column">
                 <p>Categoria</p>
-                <input type="text" placeholder="escribe la nueva categoria" id="valorCategoria">
+                <!--este valor se guarda y se pasa a la tabla de categorias-->
+                <input type="text" placeholder="escribe la nueva categoria" id="inputCategoria">
               </div>
               <div class="modal-footer">
+                <!--botones interactivos de la modal-->
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-success" onclick="addCategory()">Guardar</button>
+                <button type="button" class="btn btn-success" onclick="AddCategory()">Guardar</button>
               </div>
           </div>
-          </div>
+        </div>
       </div>
-      
+      /***/
+      <div
+        class="modal fade"
+        id="AddCategoryModal"
+        tabindex="-1"
+        aria-labelledby="AddCategoryModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="AddCategoryModalLabel">
+                Añade una categoría
+              </h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <p>Nueva categoría</p>
+              <input
+                type="text"
+                placeholder="escribe la categoria"
+                id="inputCategoria"
+              />
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Cancelar
+              </button>
+              <button
+                type="button"
+                class="btn btn-primary"
+                onclick="AddCategory()"
+              >
+                Guardar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
       <!-- NUEVO SITIO WEB | Falta cambiar datos | Pass Saver Html - Css-->
       <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">
@@ -223,12 +218,12 @@
           </div>
       </div>
       
-      <!-- BORRAR | Falta cambiar datos | Pass Saver Html - Css-->
-      <div class="modal fade" id="borrar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <!-- BORRAR CATEGORIA | Falta cambiar datos | Pass Saver Html - Css-->
+      <div class="modal fade" id="DeleteCategory" tabindex="-1" aria-labelledby="DeleteCategoryModalLabel" aria-hidden="true">
           <div class="modal-dialog">
           <div class="modal-content">
               <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Borrar</h1>
+                <h1 class="modal-title fs-5" id="DeleteCategoryModalLabel">Borrar categoria</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body d-flex flex-column">
@@ -240,12 +235,32 @@
               </div>
               <div class="modal-footer d-flex flex-row justify-content-center ">
                 <button type="button" class="btn btn-secondary w-25" data-bs-dismiss="modal">Salir</button>
-                <button type="button" class="btn btn-danger w-25" >Eliminar</button>
+                <button type="button" class="btn btn-danger w-25" id="acceptDeleteCategory" onclick="DeleteCategory()" data-bs-dismiss="modal">Aceptar</button>
               </div>
           </div>
           </div>
       </div>
       
+      <!-- BORRAR SITIO WEB | Falta cambiar datos | Pass Saver Html - Css-->
+      <div class="modal fade" id="DeleteSiteModal" tabindex="-1" aria-labelledby="DeleteSiteModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="DeleteSiteModalLabel">Delete Site Web</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body d-flex flex-column">
+                <div class="d-flex flex-column mt-3 bg-info-subtle">
+                  <p>Are you sure?</p>
+                </div>
+              </div>
+              <div class="modal-footer d-flex flex-row justify-content-center ">
+                <button type="button" class="btn btn-danger w-25" data-bs-dismiss="modal">Salir</button>
+                <button type="button" class="btn btn-danger w-25" id="acceptDeleteSite" onclick="DeleteSite()" data-bs-dismiss="modal">Aceptar</button>
+              </div>
+          </div>
+          </div>
+      </div>
       <!-- ABRIR | Falta cambiar datos | Pass Saver Html - Css-->
       <div class="modal fade" id="abrir" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">
