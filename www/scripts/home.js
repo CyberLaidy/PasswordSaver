@@ -137,8 +137,8 @@ fetch('http://localhost:3000/categories')
         childCol6BtBorrar.onclick=()=>localStorage.setItem('idSWeb', site.id);
         childCol6.appendChild(childCol6BtBorrar);
         
-    });
-
+      });
+    };
 
    /*  fetch('http://localhost:3000/sites')
     .then((response) => response.json())
@@ -175,7 +175,7 @@ fetch('http://localhost:3000/categories')
     .catch((err) => console.error(err));
     //Visualizamos los sitipos web actualizados
     location.reload();
-}
+    }
 
 
     /********************************************/
@@ -207,8 +207,6 @@ fetch('http://localhost:3000/categories')
         .catch((err) => console.log(err));
     }
 
-
-
     /********************************************/
     /******** ELIMINAR SITIO WEB **********/
     /******************************************/
@@ -235,9 +233,11 @@ fetch('http://localhost:3000/categories')
     function DeleteCategory() {
         //1- Recoger el Id del site
         let id = localStorage.getItem('idCateg');
+        console.log('id')
       
         //2- Borrar los sites de la category
         const option1 = { method: 'GET' };
+        console.log('id')
       
         fetch(`http://localhost:3000/categories/${id}`, option1)
           .then((response) => response.json())
@@ -258,7 +258,4 @@ fetch('http://localhost:3000/categories')
       
         //Visualizar los sites actualizados
         location.reload();
-      }
-
-
-};
+      };
