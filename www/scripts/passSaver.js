@@ -4,6 +4,7 @@ function generatePassword() {
     const characters =
       'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%*';
     const charactersLength = characters.length;
+    //Longitud de 8 posiciones
     for (let i = 0; i < 8; i++) {
       password += characters.charAt(Math.floor(Math.random() * charactersLength));
     }
@@ -51,7 +52,7 @@ function generatePassword() {
   async function onSubmit() {
     if (!onValidar()) {
       alert(
-        'Todos los campos son obligatorios, por favor rellena todos los campos.'
+        'Por favor rellena todos los campos.'
       );
       return;
     }
