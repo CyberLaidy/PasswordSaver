@@ -1,15 +1,17 @@
+//Generamos una contraseña segura
 function generatePassword() {
     let password = '';
     const characters =
-      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+~`|}{[]:;?><,./-=';
+      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%*';
     const charactersLength = characters.length;
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 8; i++) {
       password += characters.charAt(Math.floor(Math.random() * charactersLength));
     }
     let field = document.getElementById('inputPassword');
     field.value = password;
   }
   
+  //Mostramos las contraseñas
   function hidePassword() {
     let x = document.getElementById('inputPassword');
     let eye = document.getElementById('showPassword');
@@ -24,7 +26,7 @@ function generatePassword() {
     }
   }
   
-  function onCheckForm() {
+  function onValidar() {
     /* validate email input has an email */
     let user = document.getElementById('inputUser').value;
     if (user == '') {
@@ -45,8 +47,9 @@ function generatePassword() {
     return true;
   }
   
+  //Validamos que los campos no están vacios
   async function onSubmit() {
-    if (!onCheckForm()) {
+    if (!onValidar()) {
       alert(
         'Todos los campos son obligatorios, por favor rellena todos los campos.'
       );
@@ -57,7 +60,7 @@ function generatePassword() {
     let password = document.getElementById('inputPassword').value;
     let url = document.getElementById('inputURL').value;
     let description = document.getElementById('inputDescription').value || '';
-    let id = localStorage.getItem('idC') || 1;
+    let id = localStorage.getItem('idCateg') || 1;
     const body = {
       name: name,
       url: url,
