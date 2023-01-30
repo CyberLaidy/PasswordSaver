@@ -15,7 +15,8 @@
       <div class="cabecera-web bg-dark bg-opacity-50 d-flex">
         <p class="titulo-cabecera d-flex m-auto fs-3 fw-bold p-2 text-white text-uppercase">Pass Saver - Gestor de contraseñas</p>      
       </div>
-       <!---------------------------------------------------->
+      
+      <!---------------------------------------------------->
       <!------------------- BOTONES PRINCIPALES-------------->
       <!---------------------------------------------------->
       <div class="columnas-body d-flex flex-column h-auto w-auto ">
@@ -23,6 +24,7 @@
           <div class="botones-habilitados d-flex ms-5">
             <button type="button" id="myInput" class="modal-boton-sitio btn btn-outline-primary mt-4 m-3" data-bs-toggle="modal" data-bs-target="#AddCategoryModal">Nueva categoria</button>
             <button type="button" class="modal-boton-sitio btn btn-outline-info mt-4 m-3" data-bs-toggle="modal" data-bs-target="#passSaverModal" onload="asignOnClick()">Nuevo sitio web</button>
+            <button type="button" class="modal-boton-sitio btn btn-outline-secondary mt-4 m-3" data-bs-toggle="modal"  onclick="cargarWeb()">Recargar web</button>
           </div>
         </div>
       </div>
@@ -69,6 +71,7 @@
 
         </div>
       </div >
+      
       <!---------------------------------------------------->
       <!------------------- BOTONES ------------------------>
       <!---------------------------------------------------->
@@ -78,7 +81,7 @@
         <button class="boton-editar"><svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M3 21h18M12.222 5.828L15.05 3 20 7.95l-2.828 2.828m-4.95-4.95l-5.607 5.607a1 1 0 00-.293.707v4.536h4.536a1 1 0 00.707-.293l5.607-5.607m-4.95-4.95l4.95 4.95" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg> Editar</button>
         <button class="boton-guardar"><svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M3 19V5a2 2 0 012-2h11.172a2 2 0 011.414.586l2.828 2.828A2 2 0 0121 7.828V19a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="#000000" stroke-width="1.5"></path><path d="M8.6 9h6.8a.6.6 0 00.6-.6V3.6a.6.6 0 00-.6-.6H8.6a.6.6 0 00-.6.6v4.8a.6.6 0 00.6.6zM6 13.6V21h12v-7.4a.6.6 0 00-.6-.6H6.6a.6.6 0 00-.6.6z" stroke="#000000" stroke-width="1.5"></path></svg> Guardar</button>
       </div>
-        
+      
       <!-------------------------------------------------------------------->
       <!----------------MODAL--AÑADIR NUEVA CATEGORIA ---------------------->
       <!-------------------------------------------------------------------->
@@ -146,7 +149,7 @@
       </div>
       
       <!------------------------------------------------------------------->
-      <!--------------MODAL - VISUALIZAR SITIO WEB ------------------------>
+      <!--------------MODAL - MOSTRAR PASSWORD     ------------------------>
       <!------------------------------------------------------------------->
       <div class="modal fade" id="viewSiteModal" tabindex="-1" aria-labelledby="viewSiteModalLabel" aria-hidden="true">
           <div class="modal-dialog">
@@ -156,9 +159,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body d-flex flex-column">
-                  <div class="resultado">
-                    <p></p>
-                  </div>
+                              
               </div>
               <div class="modal-footer d-flex flex-row justify-content-center ">
                 <button type="button" class="btn btn-secondary w-25" data-bs-dismiss="modal">Salir</button>
@@ -166,6 +167,7 @@
           </div>
           </div>
       </div>
+
       <!------------------------------------------------------------------->
       <!---------------MODAL - BORRAR CATEGORIA    ------------------------>
       <!------------------------------------------------------------------->
@@ -229,15 +231,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body d-flex flex-column">
-                <div class="d-flex flex-column mt-3 bg-info-subtle">
-                  <p>Sitio web: </p>
-                </div>
-                <div class="d-flex flex-column mt-3 bg-info-subtle">
-                  <p>Usuario: __________________</p>
-                </div>
-                <div class="d-flex flex-column mt-3 bg-info-subtle">
-                  <p>Password: __________________</p>
-                </div>
+                <!--mostramos password-->
               </div>
               <div class="modal-footer d-flex flex-row justify-content-center ">
                 <button type="button" class="btn btn-secondary w-25" data-bs-dismiss="modal">Salir</button>
@@ -273,7 +267,7 @@
             <div class="row mb-3">
               <label for="inputUser" class="col-sm-2 col-form-label bg-info-subtle" >User</label>
               <div class="col-sm-10">
-                <input type="email" class="form-control" id="inputUser" placeholder="yourname@mail.com"/>
+                <input type="text" class="form-control" id="inputUser" placeholder="name user"/>
               </div>
             </div>
             <div class="row mb-3">
@@ -350,5 +344,6 @@
         </div>
       </div>
     </div>
+    
   </body>
 </html>
