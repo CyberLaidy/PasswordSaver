@@ -1,7 +1,8 @@
 
 /**Botones */
 const btnBorrar = 'Delete <svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M9.172 14.828L12.001 12m2.828-2.828L12.001 12m0 0L9.172 9.172M12.001 12l2.828 2.828M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>';
-const btnVer = 'Ver <svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M3 21h18M12.222 5.828L15.05 3 20 7.95l-2.828 2.828m-4.95-4.95l-5.607 5.607a1 1 0 00-.293.707v4.536h4.536a1 1 0 00.707-.293l5.607-5.607m-4.95-4.95l4.95 4.95" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>';
+//const btnVer = 'Ver <svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M3 21h18M12.222 5.828L15.05 3 20 7.95l-2.828 2.828m-4.95-4.95l-5.607 5.607a1 1 0 00-.293.707v4.536h4.536a1 1 0 00.707-.293l5.607-5.607m-4.95-4.95l4.95 4.95" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>';
+const btnVer = 'Passw <svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"color="#000000"><path d="M12 14a2 2 0 100-4 2 2 0 000 4z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 12c-1.889 2.991-5.282 6-9 6s-7.111-3.009-9-6c2.299-2.842 4.992-6 9-6s6.701 3.158 9 6z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </svg>';
 const btnAbrir = ' Open <svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M8 21h12.4a.6.6 0 00.6-.6V3.6a.6.6 0 00-.6-.6H3.6a.6.6 0 00-.6.6V16M3.5 20.5L12 12m0 0v4m0-4H8" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>';
 const btnGuardar = 'Save <svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M3 19V5a2 2 0 012-2h11.172a2 2 0 011.414.586l2.828 2.828A2 2 0 0121 7.828V19a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="#000000" stroke-width="1.5"></path><path d="M8.6 9h6.8a.6.6 0 00.6-.6V3.6a.6.6 0 00-.6-.6H8.6a.6.6 0 00-.6.6v4.8a.6.6 0 00.6.6zM6 13.6V21h12v-7.4a.6.6 0 00-.6-.6H6.6a.6.6 0 00-.6.6z" stroke="#000000" stroke-width="1.5"></path></svg>';
 
@@ -100,7 +101,7 @@ window.onload = () => {
         childCol4.type = 'td';
         childCol4.classList = 'align-middle';
         //La password se mostrará con el botón abrir
-        childCol4.innerText = '***************';
+        childCol4.innerText = '************';
         childRow.appendChild(childCol4);
         
         //4ta Creamos la Columna fecha creada
@@ -120,14 +121,14 @@ window.onload = () => {
         childCol6BtAbrir.innerHTML=btnAbrir;
         childCol6BtAbrir.onclick=()=>localStorage.setItem('idSWeb', site.url); //Abrir el enlace de la url
         childCol6.appendChild(childCol6BtAbrir);
-        //Boton de visualizar los datos
+        //Boton de visualizar las password de los sitios web
         let childCol6BtVer = document.createElement('button');
         childCol6BtVer.type= 'button';
         childCol6BtVer.classList='align-middle border-1 btn btn-outline-success m-1';
         childCol6BtVer.innerHTML=btnVer;
         childCol6BtVer.setAttribute('data-bs-toggle', 'modal');
         childCol6BtVer.setAttribute('data-bs-target', '#viewSiteModal');
-        childCol6BtVer.onclick=()=>localStorage.setItem('idSWeb', site.id);
+        childCol6BtVer.onclick=()=>localStorage.setItem('idSWeb', site.password);
         childCol6.appendChild(childCol6BtVer);
         //Boton de eliminar
         let childCol6BtBorrar = document.createElement('button');
@@ -144,7 +145,7 @@ window.onload = () => {
 
 
     /*******************************************************/
-    /** VISUALIZAMOS LOS SITES WEB DE CADA CATEGORIA*******/
+    /** VISUALIZAMOS TODOS LOS SITES WEB DE CATEGORIA*******/
     /*****************************************************/
     function visualizeCategorySites (categoryId){
         let parent = document.getElementById('sitesTable');
@@ -175,20 +176,12 @@ window.onload = () => {
             method: 'POST',
             body: JSON.stringify(body),
           }; 
-        //comprobar que el nombre de la categoria no esta repetido *******************************************mirara luego
         fetch(`http://localhost:3000/categories/`, options)
-        .then((response) => {
-            if (nombre == '') {
-              alert('por favor rellene todos los campos')
-            }
-            return
-            //response.json();
-        })
-        //opciones de respuesta, añadir datos o mensaje de error
+        .then((response) => response.json())
         .then((response) => console.log(response))
-        .finally(() => location.reload())
         .catch((err) => console.log(err));
-    }
+        location.reload();
+      }
     
 
     /********************************************/
@@ -203,7 +196,7 @@ window.onload = () => {
         .then((response) => response.json())
         .then((response) => console.log(response))
         .catch((err) => console.error(err));
-        //Visualizamos los sitipos web actualizados
+        //Visualizamos los tipos web actualizados
         location.reload();
     }
 
@@ -238,27 +231,31 @@ window.onload = () => {
       location.reload();
     };
 
-    
+    /**************************************************/
+    /****** MOSTRAR DE NUEVO TODOS LOS SITES *********/
+    /************************************************/
+      function cargarWeb() {
+        location.reload();
+      }
 
 
-
-
-      /********************************************/
-    /******** DETALLES DE UN SITIO WEB *********/
+    /********************************************/
+    /*********** MOSTRAR CONTRASEÑA ************/
     /******************************************/
-    /*  function viewSite() {
-      let id = localStorage.getItem('idSWeb');
-      const options = {method: 'GET'};
+    function viewPassword() {
 
-      fetch(`http://localhost:3000/sites/${id}`, options)
-        .then(response => response.json())
-        .then(response => 
-          response.forEach((site) => {
-            let resultado = document.createElement('div')
-            resultado.type='div';
-            resultado.innerText = JSON.stringify(resultado);
-            console.log(site.id)
+    } 
+    
+    /********************************************/
+    /********  ABRIR URL DEL SITE WEB  *********/
+    /******************************************/
+    function openSite (){
+      localStorage.setItem('idSWeb', site.url);
+      const option1 = { method: 'GET' };
+      fetch(`http://localhost:3000/sites/${url}`, option1)
+      .then((response) => response.json())
+      .then((response) => drawDataSites(response))
+      .catch((err) => console.error(err))
+      
+    }
 
-          }))
-        .catch(err => console.error(err));
-    }   */
